@@ -1,5 +1,5 @@
 # use the latest ubuntu environment (18.04) available on travis
-#dist: xenial
+dist: xenial
 
 language: go
 
@@ -41,7 +41,7 @@ notifications:
 
 deploy:
   provider: pages
-  skip_cleanup: true
+  cleanup: false
   github_token: $GITHUB_TOKEN  
   keep_history: true
   on:
