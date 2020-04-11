@@ -41,10 +41,10 @@ notifications:
 #  - go test -v -race ./...  # Run all the tests with the race detector enabled
 
 deploy:
-  provider: pages
-  strategy: git
+  provider: releases
   cleanup: false
-  token: $GITHUB_TOKEN  
+  api_key: $GITHUB_TOKEN  
   keep_history: true
   on:
     branch: master
+    tags: false
