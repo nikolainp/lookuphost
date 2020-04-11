@@ -38,3 +38,11 @@ notifications:
 #script:
 #  - golangci-lint run       # run a bunch of code checkers/linters in parallel
 #  - go test -v -race ./...  # Run all the tests with the race detector enabled
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN  
+  keep_history: true
+  on:
+    branch: master
