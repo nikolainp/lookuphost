@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"io"
 	"net"
@@ -9,19 +10,35 @@ import (
 
 func main() {
 
-	if len(os.Args) != 2 {
-		fmt.Printf("Usage: %s <hostname>\n", os.Args[0])
-		os.Exit(0)
-	}
+	usage()
 
-	addr, err := net.LookupHost(os.Args[1])
+	addr, err := getAddress(os.Args[1])
 	if err != nil {
 		os.Exit(0)
 	}
 
-	for i := range addr {
-		io.WriteString(os.Stdout, addr[i])
-		io.WriteString(os.Stdout, "\n")
+	io.WriteString(os.Stdout, addr)
+	io.WriteString(os.Stdout, "\n")
+}
+
+func usage() {
+	if len(os.Args) != 2 {
+		fmt.Printf("Usage: %s <hostname>\n", os.Args[0])
+		os.Exit(0)
+	}
+}
+
+func getAddress(hostName string) (string, error) {
+
+	addr, err := net.LookupHost(hostName)
+	if err != nil {
+		return "", err
 	}
 
+	jsonAddr, err := json.Marshal(addr)
+	if err != nil {
+		return "", err
+	}
+
+	return string(jsonAddr), nil
 }
