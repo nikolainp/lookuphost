@@ -44,7 +44,7 @@ script:
 
 deploy:
   provider: releases
-  cleanup: false
+  skip_cleanup: true
   token: $GITHUB_TOKEN  
   file:
     - lookuphost
