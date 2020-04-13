@@ -51,4 +51,4 @@ deploy:
     - lookuphost.exe
   on:
     branch: master
-    tags: false
+    tags: true
