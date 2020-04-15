@@ -2,7 +2,7 @@
 
 ## About
 This is a simple little plugin to let you lookup ip address by host for [consul-template](https://github.com/hashicorp/consul-template). 
-Download it from [releases](./releases/) and it's ready to use.
+Download it from [releases](https://github.com/nikolainp/lookuphost/releases) and it's ready to use.
 
 ## Examples
 
