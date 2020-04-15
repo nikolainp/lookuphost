@@ -2,11 +2,12 @@
 
 ## About
 This is a simple little plugin to let you lookup ip address by host for [consul-template](https://github.com/hashicorp/consul-template). 
+Download it from [releases](./releases/) and it's ready to use.
 
 ## Examples
 
 ```
-{{ range $d = plugin "lookuphost" .Address }}
-    {{ $d }} .Name
-{{ end }}
+# master postgres
+{{ range service "master.postgres|passing" }}{{ range $d := plugin "/usr/local/bin/lookuphost" .Address | parseJSON}}{{ $d }} master.postgres
+{{ end }}{{ end }}
 ```
